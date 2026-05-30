@@ -4,7 +4,7 @@ import os
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from agentcrew import Agent, Task, Crew, Process
+from __init__ import Agent, Task, Crew, Process
 
 st.set_page_config(
     page_title="AgentCrew — AI Workforce",

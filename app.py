@@ -3,9 +3,25 @@ import os
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from core.agent import Agent
-from core.task import Task
-from core.crew import Crew, Process
+import importlib.util
+
+def load_module(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+base = os.path.dirname(os.path.abspath(__file__))
+logger_mod = load_module("logger", os.path.join(base, "utils", "logger.py"))
+llm_mod = load_module("llm", os.path.join(base, "utils", "llm.py"))
+task_mod = load_module("task", os.path.join(base, "core", "task.py"))
+agent_mod = load_module("agent", os.path.join(base, "core", "agent.py"))
+crew_mod = load_module("crew", os.path.join(base, "core", "crew.py"))
+
+Agent = agent_mod.Agent
+Task = task_mod.Task
+Crew = crew_mod.Crew
+Process = crew_mod.Process
 
 st.set_page_config(
     page_title="AgentCrew — AI Workforce",

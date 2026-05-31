@@ -1,4 +1,4 @@
-# ⚡ AgentCrew — Autonomous AI Workforce Platform
+# ⚡ NEXWRA — Autonomous AI Workforce Platform
 
 Deploy teams of AI agents that research, write, and execute complex tasks automatically.
 
